@@ -1,12 +1,12 @@
 <div class="container">
-    		<h2 id="title">Flicker feed:</h2>
-    		<ul>
-    		 	{{#each photo in photos}}
-    		 		<li>
-    		 			{{photo.title}} ({{photo.username}}) <br>
-    		 			<img src= "{{photo.url}}" />
-    		 		</li>
-    		 	{{/each}}
-    		 </ul>
-    	</div>
-    {{outlet}}
+	<h2 id="title">Flicker feed:</h2>
+		<ul class="list-group">
+		 	{{#each photo in photos}}
+		 		<li class="list-group-item">
+		 			{{photo.title}} ({{photo.username}}) <br>
+		 			<img class="feed-img" src="{{photo.url}}" />
+		 		</li>
+		 	{{/each}}
+  		 </ul>
+ 	</div>
+  {{outlet}}
