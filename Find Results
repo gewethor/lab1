@@ -1,0 +1,94 @@
+Searching 24749 files for "welcome to ember"
+
+/home/student/Desktop/myproject/app/templates/application.hbs:
+    1:  <div class="container">  
+    		<h2 id="title">Flicker feed:</h2> 
+    		<ul> 
+    		 	{{#each photo in photos}} 
+    		 		<li> 
+    		 			{{photo.title}} ({{photo.username}}) <br>  
+    		 			<img src= "{{photo.url}}" /> 
+    		 		</li> 
+    		 	{{/each}} 
+    		 </ul>  
+    	</div>
+    2  {{outlet}}
+
+/home/student/Desktop/myproject/node_modules/ember-cli/blueprints/app/files/app/templates/application.hbs:
+    1: <div class="container">  
+    		<h2 id="title">Flicker feed:</h2> 
+    		<ul> 
+    		 	{{#each photo in photos}} 
+    		 		<li> 
+    		 			{{photo.title}} ({{photo.username}}) <br>  
+    		 			<img src= "{{photo.url}}" /> 
+    		 		</li> 
+    		 	{{/each}} 
+    		 </ul>  
+    	</div>
+    2  {{outlet}}
+
+/home/student/Desktop/myproject/node_modules/ember-cli/tests/fixtures/brocfile-tests/default-development/tests/integration/app-boots-test.js:
+   24  
+   25    andThen(function() {
+   26:     assert.equal(Ember.$('#title').text(), 'Welcome to Ember.js');
+   27    });
+   28  });
+
+/home/student/Desktop/myproject/node_modules/ember-cli/tests/fixtures/brocfile-tests/wrap-in-eval/tests/integration/wrap-in-eval-test.js:
+   24  
+   25    andThen(function() {
+   26:     assert.equal(Ember.$('#title').text(), 'Welcome to Ember.js');
+   27    });
+   28  });
+
+/home/student/Desktop/myproject/node_modules/ember-cli-app-version/tests/dummy/app/templates/application.hbs:
+    1: <h2 id='title'>Welcome to Ember.js</h2>
+    2  
+    3  {{outlet}}
+
+/home/student/Desktop/myproject/node_modules/ember-cli-content-security-policy/tests/dummy/app/templates/application.hbs:
+    1: <h2 id='title'>Welcome to Ember.js</h2>
+    2  
+    3  {{outlet}}
+
+6 matches across 6 files
+
+
+Searching 24749 files for "welcome to ember"
+
+/home/student/Desktop/myproject/app/templates/application.hbs:
+    1: <h2 id="title">Welcome to Ember.js</h2>
+    2  
+    3  {{outlet}}
+
+/home/student/Desktop/myproject/node_modules/ember-cli/blueprints/app/files/app/templates/application.hbs:
+    1: <h2 id="title">Welcome to Ember.js</h2>
+    2  
+    3  {{outlet}}
+
+/home/student/Desktop/myproject/node_modules/ember-cli/tests/fixtures/brocfile-tests/default-development/tests/integration/app-boots-test.js:
+   24  
+   25    andThen(function() {
+   26:     assert.equal(Ember.$('#title').text(), 'Welcome to Ember.js');
+   27    });
+   28  });
+
+/home/student/Desktop/myproject/node_modules/ember-cli/tests/fixtures/brocfile-tests/wrap-in-eval/tests/integration/wrap-in-eval-test.js:
+   24  
+   25    andThen(function() {
+   26:     assert.equal(Ember.$('#title').text(), 'Welcome to Ember.js');
+   27    });
+   28  });
+
+/home/student/Desktop/myproject/node_modules/ember-cli-app-version/tests/dummy/app/templates/application.hbs:
+    1: <h2 id='title'>Welcome to Ember.js</h2>
+    2  
+    3  {{outlet}}
+
+/home/student/Desktop/myproject/node_modules/ember-cli-content-security-policy/tests/dummy/app/templates/application.hbs:
+    1: <h2 id='title'>Welcome to Ember.js</h2>
+    2  
+    3  {{outlet}}
+
+6 matches across 6 files
