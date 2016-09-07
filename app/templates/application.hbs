@@ -1,5 +1,17 @@
-<div class="container">
-	<h2 id="title">Flicker feed:</h2>
+ <nav class="navbar navbar-default navbar-fixed-top">
+ 	<div class="container-fluid">
+ 		<div class="navbar-header">
+ 			<a class="navbar-brand" href="#">My App</a>
+ 		</div>
+ 		<div class="navbar-right search-field">
+ 		{{#bs-form formLayout="inline" action="search"}}
+ 		<label class="control-label">Search By Name:</label>
+ 		{{bs-input type="text" value=searchField}}
+ 		{{/bs-form}}
+ 		</div>
+ 	</div>
+ </nav>
+ <div class="container">
 		<ul class="list-group">
 		 	{{#each photo in photos}}
 		 		<li class="list-group-item">
@@ -8,5 +20,5 @@
 		 		</li>
 		 	{{/each}}
   		 </ul>
- 	</div>
-  {{outlet}}
+  </div>
+{{outlet}}
