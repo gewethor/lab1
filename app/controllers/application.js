@@ -6,7 +6,7 @@ var Photo = Ember.Object.extend({
     url: '',
    });
 
-var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, { 
+var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
     sortProperties: ['title'],
     sortAscending: true,
     content: [],
@@ -56,7 +56,7 @@ export default Ember.Controller.extend({
                 return photo.get('title').match(rx) || photo.get('username').match(rx);
 
                 })
-             };
+           );
         }
     }
 });

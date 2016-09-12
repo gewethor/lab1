@@ -13,7 +13,7 @@
  </nav>
  <div class="container">
 		<ul class="list-group">
-		 	{{#each photo in photos}}
+		 	{{#each photo in filteredPhotos}}
 		 		<li class="list-group-item">
 		 			{{photo.title}} ({{photo.username}}) <br>
 		 			<img class="feed-img" src="{{photo.url}}" />
