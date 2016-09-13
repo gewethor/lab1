@@ -14,67 +14,21 @@ var Photo = Ember.Object.extend({
         return "https://farm"+this.get('farm')+
         ".staticflickr.com/"+this.get('server')+
         "/"+this.get('id')+"_"+this.get('secret')+"_b.jpg";
-        }.property('farm', 'server', 'id', 'secret'),
+        }.property('farm','server','id','secret'),
    });
 
 var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
     sortProperties: ['title'],
     sortAscending: true,
     content: [],
-    });
 
-var testPhotos = PhotoCollection.create();
-var testimg1 = Photo.create({
-    title: "Google logo",
-    username: "google",
-    url: "https://www.google.com/images/srpr/logo11w.png"
-});
+ });
 
-var testimg2 = Photo.create({
-    title: "UNO Logo",
-    username: "UNO",
-    url: "http://www.unomaha.edu/_files/images/logo-subsite-o-2.png",
-});
-
-var testimg3 = Photo.create({
-    title: "Facebook Logo",
-    username: "Facebook",
-    url: "https://www.facebook.com/images/fb_icon_325x325.png",
-});
-
-var testimg4 = Photo.create({
-    title: "Hubble Carina Nebula",
-    username: "NSA",
-    url: "http://imgsrc.hubblesite.org/hu/db/images/hs-2010-13-a-1920x1200_wallpaper.jpg"
-});
-
-testPhotos.pushObject(testimg1);
-testPhotos.pushObject(testimg2);
-testPhotos.pushObject(testimg3);
-testPhotos.pushObject(testimg4);
-/*
 export default Ember.Controller.extend({
-    photos: testPhotos,
-    searchField: '',
-    filteredPhotos: testPhotos,
-    actions: {
-        search: function () {
-            var filter = this.get('searchField');
-            var rx = new RegExp(filter, 'gi');
-            var photos = this.get('photos');
-            this.set('filteredPhotos',
-            photos.filter(function(photo){
-                return photo.get('title').match(rx) || photo.get('username').match(rx);
-
-                })
-           );
-        }
-    }
-});
-*/
-export default Ember.Controller.extend({
-    photos: testPhotos,
+    photos: PhotoCollection.create(),
     searchfield: '',
+    tagSearchField: '',
+    tagList: ['hi','cheese'],
     filteredPhotos: function () {
         var filter = this.get('searchField');
         var rx = new RegExp(filter,'gi');
@@ -86,14 +40,14 @@ export default Ember.Controller.extend({
     }.property('photos.@each', 'seachField'),
     actions: {
         search: function() {
-            this.get('filteredPhotos');
+            this.get('photos').content.clear(),
+            this.send('getPhotos',this.get('tagSearchField'));
         },
 
-    getPhotos: function() {
+    getPhotos: function(tag) {
     var apiKey = 'a06516fcecef0e96833dc70617e54917';
     var host = 'https://api.flickr.com/services/rest/';
     var method = "flickr.tags.getClusterPhotos";
-    var tag = "glitter";
     var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tag="+tag+"&format=json&nojsoncallback=1";
     var photos = this.get('photos');
      Ember.$.getJSON(requestURL, function(data){
@@ -116,5 +70,11 @@ export default Ember.Controller.extend({
             });
         });
     },
-}
+    clicktag: function(tag){
+        this.set('tagSearchField', tag);
+        this.get('photos').content.clear();
+        this.store.unloadAll('photo');
+        this.send('getPhotos',tag);
+        }
+    }
 });
