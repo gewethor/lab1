@@ -16,6 +16,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "'self' ",
+      'script-src': "'self' ",
+      'front-src': "'self' ",
+      'connect-src': "'self' https://api.flicr.com",
+      'img-src': "'self' http: https:",
+      'style-src': "'self' ",
+      'media-src': "'self' ",
     }
   };
 
@@ -45,15 +55,3 @@ module.exports = function(environment) {
 
   return ENV;
 };
- 
- /*contentSecurityPolicy: {
-  'default-src': "'self' ",
-  'script-src': "'self' ",
-  'front-src': "'self' ",
-  'connect-src': "'self' https://api.flicr.com",
-  'img-src': "'self' http: https:",
-  'style-src': "'self' ",
-  'media-src': "'self' ",
-  }
-
-*/
