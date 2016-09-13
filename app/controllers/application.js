@@ -61,5 +61,21 @@ export default Ember.Controller.extend({
         this.store.unloadAll('photo');
         this.send('getPhotos',tag);
         }
-    }
-});
+    },
+
+     init: function(){
+        this._super.apply(this, arguments);
+        var apiKey = 'a06516fcecef0e96833dc70617e54917';
+        var host = 'https://api.flickr.com/services/rest/';
+        var method = "flickr.tags.getHotList";
+        var requestURL = host + "?method="+method + "&api_key="+apiKey+"&count=75&format=json&nojsoncallback=1";
+        var t = this;
+        Ember.$.getJSON(requestURL, function(data){
+        //callback for successfully completed requests
+        console.log(data);
+        data.hottags.tag.map(function(tag) {
+            t.get('tagList').pushObjects(tag._content);
+            });
+        });
+      }
+ });
