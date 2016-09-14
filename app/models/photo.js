@@ -1,15 +1,18 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  	title: '',
-    username: '',
-    //flickr extra data
-    owner: '',
-    //flickr url data
+  	title: DS.attr('string'),
+    dates: DS.attr('object'),
+    owner: DS.attr('object'),
+	description: DS.attr('string'),
+	link: DS.attr('string'),
+	views: DS.attr('number'),
+	tags: DS.attr('object'),
+	//flickr URL data
     id: '',
-    farm: 0,
-    secret:'',
-    server: '',
+    farm: DS.attr('number'),
+    secret: DS.attr('string'),
+    server: DS.attr('string'),
     url: function() {
         return "https://farm"+this.get('farm')+
         ".staticflickr.com/"+this.get('server')+

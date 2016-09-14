@@ -22,7 +22,7 @@ module.exports = function(environment) {
       'default-src': "'self' ",
       'script-src': "'self' ",
       'front-src': "'self' ",
-      'connect-src': "'self' https://api.flicr.com",
+      'connect-src': "'self' https://api.flickr.com",
       'img-src': "'self' http: https:",
       'style-src': "'self' ",
       'media-src': "'self' ",
