@@ -9,7 +9,10 @@ var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 export default Ember.Controller.extend({
     photos: PhotoCollection.create(),
     searchfield: '',
-    tagSearchField: '',
+    tagSearchField: '', 
+    filteredPhotosLoaded: function (){
+        return this.get('filteredPhotos').length >0;
+    }.property('filteredPhotos.length'),
     tagList: ['hi','cheese'],
     filteredPhotos: function () {
         var filter = this.get('searchField');
@@ -22,6 +25,7 @@ export default Ember.Controller.extend({
     }.property('photos.@each','searchField'),
     actions: {
         search: function() {
+            this.set('loading', true);
             this.get('photos').content.clear();
             this.store.unloadAll('photo');
             this.send('getPhotos',this.get('tagSearchField'));
@@ -64,7 +68,8 @@ export default Ember.Controller.extend({
         },
 
         clicktag: function(tag){
-            this.set('tagSearchField', tag);
+            this.set('tagSearchField', tag); 
+            this.set('loading', true);
             this.get('photos').content.clear();
             this.store.unloadAll('photo');
             this.send('getPhotos',tag);
