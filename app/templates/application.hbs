@@ -20,19 +20,34 @@
 
   {{#if filteredPhotos}}
 		<ul class="list-group">
-		 	{{#each photo in filteredPhotos}}
-		 		<li class="list-group-item">
-		 			Title: {{photo.title}} <br>
-		 			{{photo.description}}<br>
-		 			Views: {{photos.views}}<br>
-		 			Tags: {{#each tag in photo.tags}}{{tag}}, {{/each}}<br>
-		 			User: {{photo.owner.username}}<br>
-		 			Profile: <a href={{photo.link}}>{{photo.link}}</a>
-		 			<img class="feed-img" src="{{photo.url}}" />
-		 		</li>
-		 	{{/each}}
+		{{#each photo in filteredPhotos}}
+		 <li class="list-group-item"> 
+		 		<div class="media"> 
+		 			<div class="media-left media-middle">
+		 					<a href="{{photo.link}}" target="_blank">
+		 						<img class="media-object" src="{{photo.url}}" />
+		 					</a>
+		 					Taken: {{photo.humanReadableDate}}<br>
+		 					By: <a href={{photo.ownerurl}} target="_blank">{{photo.owner.username}}</a><br>
+		 			</div>
+		 			<div class="media-body">
+		 				<h4 class="media-heading">{{photo.title}} ({{photo.views}} Views)</h4>
+		 				{{{photo.description}}}
+		 			</div>
+		 		</div>
+		 		<br>
+		 		<div class="row">
+		 			<div class="col-md-1 col-xs-1 col-sm-1">Tags:</div>
+		 			<div class="col-md-11 col-xs-11 col-sm-11">
+		 					{{#each tag in photo.tags}}
+		 						<button class="btn btn-info btn-xs post-tag-button" {{action "clicktag" tag}}>#{{tag}}</button>
+		 					{{/each}}
+		 			</div>
+		 		</div>
+		 </li>
+		{{/each}}
   		 </ul>
-  	 {{else}}
+  	 	{{else}}
   	 	<div class="jumbotron">
   	 	<h1>Untitled App</h1>
   	 	<p> Created by Gabi Wethor </p>

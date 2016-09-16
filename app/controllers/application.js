@@ -1,8 +1,8 @@
 import Ember from "ember";
 
 var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
-    sortProperties: ['title'],
-    sortAscending: true,
+    sortProperties: ['dates.taken'],
+    sortAscending: false,
     content: [],
  });
 
@@ -17,9 +17,9 @@ export default Ember.Controller.extend({
         var photos = this.get('photos');
 
         return photos.filter(function(photo){
-            return photo.get('title').match(rx) || photo.get('username').match(rx);
+            return photo.get('title').match(rx) || photo.get('owner.username').match(rx);
         });
-    }.property('photos.@each', 'seachField'),
+    }.property('photos.@each','searchField'),
     actions: {
         search: function() {
             this.get('photos').content.clear();
@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
             //make secondard requests to get all the photo information
                 data.photos.photo.map(function(photoitem) {
                     var infoRequestURL = host + "?method="+"flickr.photos.getInfo" + "&api_key="+apiKey+ "&photo_id="+photoitem.id+"&format=json&nojsoncallback=1";
-                    Ember.$.getJSON(infoRequestURL, function (item){
+                    Ember.$.getJSON(infoRequestURL, function(item){
                         var photo = item.photo;
                         var tags = photo.tags.tag.map(function(tagitem){
                                 return tagitem._content;

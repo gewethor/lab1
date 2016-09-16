@@ -3,7 +3,7 @@
 
 export default DS.Transform.extend({
   deserialize: function(value) {
-    if (!Ember.$.isPlainobject(value)) {
+    if (!Ember.$.isPlainObject(value)) {
     	return {};
     } else {
     	return value;
@@ -12,7 +12,7 @@ export default DS.Transform.extend({
   },
 
   serialize: function(value) {
-    if (!Ember.$.isPlainobject(value)) {
+    if (!Ember.$.isPlainObject(value)) {
     	return {};
     } else {
     	return value;

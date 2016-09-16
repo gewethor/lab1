@@ -18,4 +18,13 @@ export default DS.Model.extend({
         ".staticflickr.com/"+this.get('server')+
         "/"+this.get('id')+"_"+this.get('secret')+"_b.jpg";
         }.property('farm','server','id','secret'),
+    ownerurl: function () {
+    		return "http://www.flickr.com/photos/"+this.get('owner.nsid');
+    }.property('owner.nsid'),
+    	humanReadableDate: function () {
+    		var taken = new Date(this.get('dates.taken'));
+    		var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    		var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    	return days[taken.getDay()] + " " + months[taken.getMonth()] +" "+taken.getDate()+", "+taken.getFullYear(); 
+    }.property('dates.taken')
 });
